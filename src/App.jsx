@@ -17,7 +17,7 @@ function App() {
     setIsTyping(true); // Show typing indicator
 
     try {
-      const apiKey = ''; // Replace with your OpenAI API key
+      const apiKey = API_KEY; // Replace with your OpenAI API key
       const res = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {

@@ -17,7 +17,7 @@ function App() {
     setIsTyping(true); // Show typing indicator
 
     try {
-      const apiKey = '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'; // Replace with your OpenAI API key
+      const apiKey = ''; // Replace with your OpenAI API key
       const res = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {

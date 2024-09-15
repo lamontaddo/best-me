@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './assets/App.css'; // Import your CSS file
 
+
+
 function App() {
+
   const [response, setResponse] = useState('');
   const [userInput, setUserInput] = useState('');
   const [messages, setMessages] = useState([{ role: 'assistant', content: 'Hello! What is your name?' }]); // Initial message
@@ -9,7 +12,7 @@ function App() {
   const [userName, setUserName] = useState(''); // State for user's name
   const [userId, setUserId] = useState(null); // State for MongoDB user _id
   const messagesEndRef = useRef(null); // Ref for scrolling to the end
-
+  
   // Fetch messages from MongoDB when the userId is set
   useEffect(() => {
     if (userId) {
@@ -17,8 +20,10 @@ function App() {
         try {
           const res = await fetch(`http://localhost:3000/api/user/${userId}`);
           const data = await res.json();
+          console.log(data)
           setMessages([{ role: 'assistant', content: 'Hello! What is your name?' }, ...data.messages]);
         } catch (error) {
+          
           console.error('Error fetching messages:', error);
         }
       };
@@ -110,12 +115,15 @@ function App() {
   };
 
   const fetchAIResponse = async (messages) => {
-    const apiKey = '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'; // Replace with your OpenAI API key
+
+    
+   
+   const apikey = apikey
     const res = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
+        'Authorization': `Bearer ${apikey}`,
       },
       body: JSON.stringify({
         model: 'gpt-3.5-turbo',
